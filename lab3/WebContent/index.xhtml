@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<div>
+		<h:form>
+			<h:head>Lista de Tarefas Incompletas</h:head>
+			<fieldset>
+				<p:dataTable id="listaTarefa" var="tarefa"  value="#{agendaDeTarefaBeens.listaTarefa}" rowKey="#{tarefa.nome}"  
+                 selection="#{agendaDeTarefaBeens.tarefaSelect}" selectionMode="single">  
+  
+  		<f:facet name="header">  
+            Selecione uma tarefa para ver suas informações  
+        </f:facet>
+        <p:column headerText="Nome">  
+            #{tarefa.nome}  
+        </p:column>  
+        <p:column headerText="Data Limite">  
+            #{tarefa.duracao}  
+        </p:column>  
+  		<p:column headerText="Data Criacao">  
+            #{tarefa.dataCriacao}  
+        </p:column>  
+        <p:column headerText="Status da Tarefa">  
+            #{tarefa.status}  
+        </p:column>  
+				</p:dataTable>
+				<h1></h1>
+				<h:commandButton value="Concluir Tarefa" action="#{agendaDeTarefaBeens.mudaStatus}" update="form"/>
+				<h:commandButton value="Nova Tarefa" action="cadastra.xhtml"></h:commandButton>
+				<h:commandButton value="Lista Data Limite" action="#{agendaDeTarefaBeens.ListaPorDataLimiteIncompleta()}"></h:commandButton>
+				<h:commandButton value="Lista Por Data Criacao" action="#{agendaDeTarefaBeens.ListaPorDataCriacaoIncompleta()}"></h:commandButton>
+				<h:commandButton value="Remove Tarefa Incompleta" action="#{agendaDeTarefaBeens.removeTarefaIncompleta}"></h:commandButton>
+				<h:commandButton value="Visualiza Tarefa" action="#{agendaDeTarefaBeens.visualizar(agendaDeTarefaBeens.tarefaSelect)}"></h:commandButton>
+				<h1></h1>
+				<h:head>Lista de tarefas Completas</h:head>
+				
+				<p:dataTable id="listaTarefaCompleta" var="tarefa" value="#{agendaDeTarefaBeens.listaTarefaCompleta}" rowKey="#{tarefa.nome}"  
+                 selection="#{agendaDeTarefaBeens.selecTarefaConcluida}" selectionMode="single">  
+                 <f:facet name="header">  
+            	Selecione uma tarefa para ver suas informações  
+       		 </f:facet>
+					<p:column headerText="Nome">  
+            #{tarefa.nome}  
+        </p:column>  
+        <p:column headerText="Data Limite">  
+            #{tarefa.duracao}  
+        </p:column>  
+  		<p:column headerText="Data Criacao">  
+            #{tarefa.dataCriacao}  
+        </p:column>  
+        <p:column headerText="Status da Tarefa">  
+            #{tarefa.status}  
+        </p:column>  
+				</p:dataTable>
+				<h:commandButton value="Lista Data Limite" action="#{agendaDeTarefaBeens.ListaPorDataLimiteCompleta()}"></h:commandButton>
+				<h:commandButton value="Lista Por Data Criacao" action="#{agendaDeTarefaBeens.ListaPorDataCriacaoCompleta()}"></h:commandButton>
+				<h:commandButton value="Remove Tarefa Concluida" action="#{agendaDeTarefaBeens.removeTarefaConcluida}"></h:commandButton>
+				<h:commandButton value="Visualiza Tarefa" action="#{agendaDeTarefaBeens.visualizar(agendaDeTarefaBeens.selecTarefaConcluida)}"></h:commandButton>
+				<br /> <br />
+			</fieldset>
+		</h:form>
+	</div>
+</h:body>
+</html>

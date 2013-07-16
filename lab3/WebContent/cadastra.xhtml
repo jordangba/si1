@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:define name="Alguma coisa"></ui:define>
+	<h:form>
+		<fieldset>
+			<h:head>
+			</h:head>
+			<p:panelGrid columns="2">
+
+				<f:facet name="header">  
+					Add Tarefa  
+    			</f:facet>
+
+				<h:outputLabel for="firstname" value="Nome:" />
+				<p:inputText id="firstname" value="#{agendaDeTarefaBeens.nome}"
+					label="Firstname" />
+
+				<h:outputLabel for="descricao" value="Descrição:" />
+				<p:inputTextarea id="descricao" rows="10" cols="50"
+					value="#{agendaDeTarefaBeens.descricao}"
+					minQueryLength="4" label="Descricao" />
+
+				<h:outputLabel for="dataLimite" value="Data de Limite:" />
+				<p:inputMask id="dataLimite"
+					value="#{agendaDeTarefaBeens.dataLimite}" mask="99/99/9999"
+					label="DataLimite" />
+
+				<h:outputLabel for="horas" value="Horas:" />
+				<p:inputMask id="horas"
+					value="#{agendaDeTarefaBeens.horas}" mask="99:99"
+					label="Horas" />
+
+
+				<f:facet name="footer">
+					<h:commandButton value="Confirma"
+						action="#{agendaDeTarefaBeens.criar}" style="margin:0" />
+					<h:commandButton value="Voltar"
+						action="#{agendaDeTarefaBeens.volta}" style="margin:0" />
+				</f:facet>
+			</p:panelGrid>
+			<p:growl id="growl" showDetail="true" sticky="true" life="5"/>  
+		</fieldset>
+	</h:form>
+</h:body>
+</html>
